@@ -1,7 +1,7 @@
 interface IPagination {
     count?: number;
-    limit?: number;
-    offset?: number;
+    limit: number;
+    offset: number;
     total?: number;
 }
 

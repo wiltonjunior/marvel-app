@@ -6,12 +6,13 @@ import IPagination from '@/models/Pagination';
 import { ICharacters } from '@/models/Characters';
 
 
-export const getAllCharacters = async (pagination: IPagination): Promise<Response<Pagination<ICharacters>>> => {
+export const getAllCharacters = async (params: IPagination): Promise<Response<Pagination<ICharacters>>> => {
   try {
-    const { status, data } = await api.get('/public/characters', {params: {...pagination}});
+    const { status, data } = await api.get('/public/characters', {params: {...params}});
+    const { results, ...pagination} = data.data;
     return new Response(
       status,
-      Pagination.fromJson(data.meta.pagination, data.data),
+      Pagination.fromJson(pagination, results),
     );
   } catch (e) {
     console.log("service error createEmailHost", e)

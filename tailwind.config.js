@@ -21,7 +21,12 @@ module.exports = {
       },
     },
     extend: {
-
+      fontFamily: {
+        bangers: ['"Bangers"', "sans-serif"],
+      },
+      boxShadow: {
+        '1md': '0 6px 6px -6px #000',
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],

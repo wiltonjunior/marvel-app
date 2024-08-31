@@ -1,3 +1,4 @@
+import IPagination from "./Pagination";
 import { IUrl } from "./Url";
 
 export interface IInformationCharacterItem{
@@ -11,6 +12,10 @@ export interface IInformationCharacters{
     available: number;
     collectionURI: string;
     items: IInformationCharacterItem[]
+}
+
+export interface IFilterCharacters extends IPagination {
+    nameStartsWith?: string
 }
 
 export interface ICharacters{
