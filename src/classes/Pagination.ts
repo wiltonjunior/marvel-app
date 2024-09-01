@@ -1,10 +1,10 @@
 import IPagination from "@/models/Pagination";
 
 class Pagination<T> {
-    count: number;
+    count?: number;
     limit: number;
     offset: number;
-    total: number;
+    total?: number;
     results: T[];
     constructor() {
         this.count = 0;
