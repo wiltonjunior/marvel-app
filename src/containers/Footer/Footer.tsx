@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import Container from '@/components/Container';
 
@@ -10,7 +11,9 @@ const Footer: React.FC = () => {
             <Container>
                 <div className='flex items-center justify-end'>
                     <div className='w-10'>
-                        <Marvel />
+                        <Link to="/">
+                            <Marvel />
+                        </Link>
                     </div>
                 </div>
             </Container>

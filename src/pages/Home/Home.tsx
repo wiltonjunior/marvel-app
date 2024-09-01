@@ -1,8 +1,8 @@
+import { useState } from 'react'
 import { useQuery } from "react-query";
-import { useEffect, useState } from 'react'
 import { MoveLeft, MoveRight } from 'lucide-react'
 
-import { ICharacters, IFilterCharacters } from '@/models/Characters'
+import { IFilterCharacters } from '@/models/Characters'
 
 import Filter from '@/components/Filter'
 import Button from '@/components/Button'
@@ -10,7 +10,7 @@ import Skeleton from '@/components/Skeleton'
 
 import Character from '@/containers/Character'
 
-import { getAllCharacters } from '@/services/hosts'
+import { getAllCharacters } from '@/services/characters'
 
 const Home: React.FC = () => {
   const [page, setPage] = useState<number>(0)
@@ -18,7 +18,7 @@ const Home: React.FC = () => {
 
   const { nameStartsWith = '' } = filters;
 
-  const { data: results, isLoading } = useQuery(["postsData", `${page}-${nameStartsWith}`], async () => {
+  const { data: results, isLoading } = useQuery(["getAllCharacters", `${page}-${nameStartsWith}`], async () => {
     const { data } = await getAllCharacters(filters)
     return data?.results;
   }, {
@@ -61,7 +61,7 @@ const Home: React.FC = () => {
     }
     if (results && results.length) {
       return <div className='flex flex-wrap gap-4 justify-between'>
-        {results.map(item => <Character key={item.id} name={item.name} image={`${item.thumbnail.path}.${item.thumbnail.extension}`} />)}
+        {results.map(item => <Character key={item.id} id={item.id} name={item.name} image={`${item.thumbnail.path}.${item.thumbnail.extension}`} />)}
       </div>
     }
     return <div className="w-full h-40 flex items-center justify-center">

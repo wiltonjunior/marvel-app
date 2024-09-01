@@ -1,18 +1,7 @@
-import IPagination from "./Pagination";
 import { IUrl } from "./Url";
-
-export interface IInformationCharacterItem{
-    name: string;
-    type?: string;
-    resourceURI: string;
-}
-
-export interface IInformationCharacters{
-    returned: number;
-    available: number;
-    collectionURI: string;
-    items: IInformationCharacterItem[]
-}
+import { IImage } from "./Image";
+import { IInformationDetail } from "./InformationDetail";
+import IPagination from "./Pagination";
 
 export interface IFilterCharacters extends IPagination {
     nameStartsWith?: string
@@ -24,12 +13,9 @@ export interface ICharacters{
     modified: string;
     description: string;
     resourceURI: string;
-    comics: IInformationCharacters;
-    series: IInformationCharacters;
-    stories: IInformationCharacters;
-    thumbnail: { 
-        path: string;
-        extension: string;
-    }
+    comics: IInformationDetail;
+    series: IInformationDetail;
+    stories: IInformationDetail;
+    thumbnail: IImage,
     urls: IUrl[]
 }
