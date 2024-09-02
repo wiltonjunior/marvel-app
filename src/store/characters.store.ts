@@ -9,7 +9,7 @@ type StateProps = {
 
 export const useCharactersStore = create<StateProps>((set) => ({
     characters: undefined,
-    setCharacters: (characters: ICharacters) => set((state) => ({
+    setCharacters: (characters: ICharacters) => set(() => ({
         characters,
     })),
 }));

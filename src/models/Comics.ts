@@ -1,3 +1,5 @@
 import { ISeries } from "./Series";
 
-export interface IComics extends ISeries
+export interface IComics extends ISeries {
+    
+}
