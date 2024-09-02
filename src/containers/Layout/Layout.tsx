@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 import Header from '@/containers/Header'
@@ -14,7 +15,9 @@ const Layout: React.FC<ILayoutProps> = ({ children }) => {
         <div className='w-full'>
             <Header />
             <Container>
-                {children}
+                <div className='w-full min-h-[calc(100vh-184px)]'>
+                    {children}
+                </div>
             </Container>
             <Footer />
         </div>

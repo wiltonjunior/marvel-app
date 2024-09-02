@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useQuery } from "react-query";
+import { useNavigate } from 'react-router-dom';
 import { MoveLeft, MoveRight } from 'lucide-react'
 
-import { IFilterCharacters } from '@/models/Characters'
+import { ICharacters, IFilterCharacters } from '@/models/Characters'
 
 import Filter from '@/components/Filter'
 import Button from '@/components/Button'
@@ -11,8 +12,12 @@ import Skeleton from '@/components/Skeleton'
 import Character from '@/containers/Character'
 
 import { getAllCharacters } from '@/services/characters'
+import { useCharactersStore } from '@/store/characters.store';
 
 const Home: React.FC = () => {
+  const navigate = useNavigate();
+  const { setCharacters } = useCharactersStore()
+
   const [page, setPage] = useState<number>(0)
   const [filters, setFilters] = useState<IFilterCharacters>({ offset: 0, limit: 20 })
 
@@ -49,6 +54,11 @@ const Home: React.FC = () => {
     }
   }
 
+  const setCharactersInStore = (characters: ICharacters): void => {
+    setCharacters(characters);
+    navigate(`/detail/${characters.id}`);
+  }
+
   const getComponent = (): React.ReactElement => {
     if (isLoading) {
       return <div className='flex flex-wrap gap-4 justify-between'>
@@ -61,10 +71,19 @@ const Home: React.FC = () => {
     }
     if (results && results.length) {
       return <div className='flex flex-wrap gap-4 justify-between'>
-        {results.map(item => <Character key={item.id} id={item.id} name={item.name} image={`${item.thumbnail.path}.${item.thumbnail.extension}`} />)}
+        {results.map(item => {
+          return (
+            <Character
+              key={item.id}
+              name={item.name}
+              onClick={() => setCharactersInStore(item)}
+              image={`${item.thumbnail.path}.${item.thumbnail.extension}`}
+            />)
+        })
+        }
       </div>
     }
-    return <div className="w-full h-40 flex items-center justify-center">
+    return <div className="w-full h-40 flex items-center justify-center min-h-[calc(100vh-392px)]">
       <p className="font-bangers text-xl text-black">Não há personagens a serem carregados</p>
     </div>
   }
