@@ -19,3 +19,5 @@ Para a rodar o projeto bastar execultar os seguintes comandos:
   
 - npm install 
 - npm run dev
+
+Link da aplicação https://marvel-app-4kaq.vercel.app/
