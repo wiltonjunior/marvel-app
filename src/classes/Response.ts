@@ -10,6 +10,7 @@ class Response<T> {
   }
 
   static fromException<U>(error: any): Response<U> {
+    console.log("ERROR")
     if (error.response) {
       const data = error?.response.data;
       return new Response<U>(

@@ -7,7 +7,6 @@ import { IComics } from '@/models/Comics';
 import { ISeries } from '@/models/Series';
 import { ICharacters } from '@/models/Characters';
 
-
 export const getAllCharacters = async (params: IPagination): Promise<Response<Pagination<ICharacters>>> => {
   try {
     const { status, data } = await api.get('/public/characters', {params: {...params}});
@@ -17,7 +16,8 @@ export const getAllCharacters = async (params: IPagination): Promise<Response<Pa
       Pagination.fromJson(pagination, results),
     );
   } catch (e) {
-    console.log("service error createEmailHost", e)
+    console.log("ERROR !")
+    // console.log("service error createEmailHost", e)
     throw Response.fromException(e);
   }
 };

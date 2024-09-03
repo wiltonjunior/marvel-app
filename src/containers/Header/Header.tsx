@@ -5,7 +5,7 @@ import Container from '@/components/Container';
 
 import Marvel from "@/assets/marvel.svg";
 
-const Header: React.FC = () => {
+const Header: React.FC = (): React.ReactElement => {
     return (
         <div className='bg-[#202020]'>
             <Container>

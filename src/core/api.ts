@@ -1,7 +1,7 @@
 import axios from 'axios';
 import md5 from 'md5';
 
-const env = await import.meta.env;
+const env = import.meta.env;
 
 const TIME = Number(new Date())
 

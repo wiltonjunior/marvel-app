@@ -23,7 +23,7 @@ const SeriesDetail: React.FC<ISeriesDetailProps> = ({ series }) => {
     }
 
     return (
-        <div className='grid grid-cols-7 gap-4'>
+        <div key={series.id} className='grid grid-cols-7 gap-4'>
             <div className='col-span-3'>
                 <img className='border-2 border-black h-48 w-full' src={`${series.thumbnail.path}.${series.thumbnail.extension}`} alt={series.ean} />
             </div>

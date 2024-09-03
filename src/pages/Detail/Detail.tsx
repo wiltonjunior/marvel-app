@@ -17,6 +17,9 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/Tabs';
 const Detail: React.FC = () => {
   const { id } = useParams();
   const navigate = useNavigate();
+
+  console.log(id)
+
   // const { characters } = useCharactersStore();
 
   const { data: characters, isLoading } = useQuery(["getCharactersById", id], async () => {

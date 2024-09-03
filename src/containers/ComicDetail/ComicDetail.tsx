@@ -32,7 +32,7 @@ const ComicDetail: React.FC<IComicDetailProps> = ({ series }) => {
     }
 
     return (
-        <div className='grid grid-cols-7 gap-4'>
+        <div key={series.id} data-testid='comic' className='grid grid-cols-7 gap-4'>
             <div className='col-span-3'>
                 <img className='border-2 border-black h-48 w-full' src={`${series.thumbnail.path}.${series.thumbnail.extension}`} alt={series.ean} />
             </div>
